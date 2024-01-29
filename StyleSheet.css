@@ -1,0 +1,38 @@
+﻿body {
+    background-image: url("img/BackroundImg.jpg");
+}
+
+.container {
+    background: white;
+    width: 70%;
+    height: 900px;
+    margin: auto;
+}
+input {
+    margin: 1px 650px;
+    padding: 5px 5px;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+    .navbar a {
+        float: right;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 9px 70px;
+        text-decoration: underline;
+        font-size: 17px;
+    }
+
+        .navbar a:hover {
+            background: #ddd;
+            color: black;
+        }
+

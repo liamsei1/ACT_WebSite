@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage2" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>computer Web</title>
+     <link rel="stylesheet" type="text/css" href="StyleSheet.css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+     <div class="navbar">
+        <a href="HomePage.aspx">בית</a>
+         <%
+             // מגדיר את האקסס קי של הלקוח
+             if (Session["key"] == null)
+             {
+                 Session["key"] = 0;
+                // Response.Redirect("HomePage.aspx");
+             }
+             else
+             {
+                 string strKey = Session["key"].ToString();
+                 int key = int.Parse(strKey);
+
+                 if (key >= 3)
+                 {
+                     if(key==6) Response.Write("<a href='Admin.aspx'> דף אדמין" + "</a>");
+                     if(key==6) Response.Write("<a href='AdminWorkshifts1.aspx'> מערכת עבודה" + "</a>");
+                     if(key>=3) Response.Write("<a href='UpdateInfo.aspx' > עדכון פרטי מתאמן" + "</a>");
+                     if(key==4) Response.Write("<a href='TrainerPrograms.aspx' > סידור תוכניות" + "</a>");
+                     if(key==4) Response.Write("<a href='programToMember.aspx' > התאמת תוכנית" + "</a>");
+                     if(key==4) Response.Write("<a href='UserRequestedProgram.aspx' > בקשות לתוכניות" + "</a>");
+                     if(key==4) Response.Write("<a href='TrainerProgramInfo.aspx' > כתיבת תוכנית" + "</a>");
+                     if(key==3) Response.Write("<a href='TraineePrograms.aspx' > הצגת תוכניות" + "</a>");
+                     Response.Write("<a href='Logout.aspx'> התנתקות" + "</a>");
+                     Response.Write("<a href = 'InformationPage.aspx' > דף מידע" + "</a>");
+                     Response.Write("<a href='javascript: void(0)' class='dropbtn'> שלום  " + Session["username"].ToString() + "</a>");
+                 }
+                 if (key == 2)
+                 {
+                     Response.Write("<a href='MemberShipBuy.aspx' > קניית מנוי" + "</a>");
+                     Response.Write("<a href='Logout.aspx'> התנתקות" + "</a>");
+                     Response.Write("<a href = 'InformationPage.aspx' > דף מידע" + "</a>");
+                     Response.Write("<a href='javascript: void(0)' class='dropbtn'> שלום  " + Session["username"].ToString() + "</a>");
+                 }
+                 if (key == 0)
+                 {
+                     Response.Write("<a href = 'Login.aspx' > התחברות" + "</a>");
+                     Response.Write("<a href = 'Registration.aspx' > הרשמות" + "</a>");
+                     Response.Write("<a href = 'InformationPage.aspx' > דף מידע" + "</a>");
+                     Response.Write("<a href='javascript:void(0)' class='dropbtn'>שלום אורח</a>");
+                 }
+             }
+ %>       
+        </div>
+
+    <div>         
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">      
+        </asp:ContentPlaceHolder>
+    </div>
+</body>
+</html>
